@@ -3,7 +3,7 @@ package org.sagsri;
 public class Main {
     public static void main(String[] args) {
         String Str = "Welcome";
-        String Str3[] = {"a", "e", "i", "o"};
+        String Str3[] = {"a", "e", "i", "o", "u"};
         int count = 0;
         for (int i= 0;i< Str3.length; i++){
             if(Str.contains(Str3[i])){
