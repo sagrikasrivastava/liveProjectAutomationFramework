@@ -3,11 +3,23 @@
 <suite name="Data Driven Basics">
     <test verbose="2"
           preserve-order="true"
-          name="LoginTest">
+          name="Bank Manager Login Test">
         <classes>
-            <class name="org.sagsri.testcases.LoginTest">
+            <class name="org.sagsri.testcases.BankManagerLoginTest">
                 <methods>
                     <include name="loginAsBankManager"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test verbose="2"
+          preserve-order="true"
+          name="Add Customer Test">
+        <classes>
+            <class name="org.sagsri.testcases.AddCustomerTest">
+                <methods>
+                    <include name="addCustomer"/>
                 </methods>
             </class>
         </classes>
