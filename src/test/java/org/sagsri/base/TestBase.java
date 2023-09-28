@@ -1,19 +1,23 @@
 package org.sagsri.base;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import org.apache.log4j.Logger;
-import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.sagsri.utilities.ExcelReader;
+import org.sagsri.utilities.ExtentManager;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -37,8 +41,7 @@ public class TestBase {
     public static FileInputStream fis;
     public static Logger log  = Logger.getLogger("devpinoyLogger");
     public static ExcelReader excel = new ExcelReader(System.getProperty("user.dir")+"\\src\\test\\resources\\excel\\testData.xlsx");
-
-    //ChromeDriver driver =new ChromeDriver();
+    public static WebDriverWait wait;
 
     @BeforeSuite
     public void setUp() {
@@ -78,6 +81,7 @@ public class TestBase {
         log.debug("Navigated to : "+config.getProperty("testsiteurl"));
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Integer.parseInt(config.getProperty("implicit.wait")), TimeUnit.SECONDS);
+        wait=new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public boolean elementIsPresent(By by){

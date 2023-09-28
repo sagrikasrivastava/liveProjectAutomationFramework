@@ -3,12 +3,14 @@ package org.sagsri.testcases;
 import org.openqa.selenium.By;
 import org.sagsri.base.TestBase;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 public class BankManagerLoginTest extends TestBase {
 
     @Test
     public void loginAsBankManager() throws InterruptedException {
+
         log.debug("Inside Login Test");
         driver.findElement(By.cssSelector(OR.getProperty("bmlBtn"))).click();
         try {
@@ -18,5 +20,6 @@ public class BankManagerLoginTest extends TestBase {
         }
         Assert.assertTrue(elementIsPresent(By.cssSelector(OR.getProperty("addCustBtn"))), "Login Not Successful");
         log.debug("Login successfully executed");
+        Reporter.log("Login test successfully executed");
     }
 }
