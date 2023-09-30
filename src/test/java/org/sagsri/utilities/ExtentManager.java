@@ -18,14 +18,14 @@ public class ExtentManager extends TestBase {
 
     public static ExtentReports getReportInstance(){
         if (extentReport ==null){
-            setupExtentReport("Live Project Automation Framework");
+            setupExtentReport("extent_report");
         }
         return extentReport;
     }
 
     public static ExtentReports setupExtentReport(String testName){
         extentReport=new ExtentReports();
-        ExtentSparkReporter spark=new ExtentSparkReporter(System.getProperty("user.dir")+"/report/"+extentReportsprefix_Name(testName)+".html");
+        ExtentSparkReporter spark=new ExtentSparkReporter(System.getProperty("user.dir")+"\\target\\surefire-reports\\html\\"+extentReportsprefix_Name(testName)+".html");
         extentReport.attachReporter((spark));
 
         extentReport.setSystemInfo("Tester","Sagrika Srivastava");
@@ -66,7 +66,7 @@ public class ExtentManager extends TestBase {
         getTest().fail(message);
     }
     public synchronized static void attachImage(){
-        getTest().addScreenCaptureFromPath(TestUtil.screenshotName);
+        getTest().addScreenCaptureFromPath(System.getProperty("user.dir")+"\\target\\surefire-reports\\html\\"+TestUtil.screenshotName);
         //System.getProperty("user.dir")+"\\target\\surefire-reports\\html\\screenshot\\"+TestUtil.screenshotName
     }
 }

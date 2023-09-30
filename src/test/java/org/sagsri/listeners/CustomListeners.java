@@ -32,6 +32,8 @@ public class CustomListeners extends TestBase implements ITestListener {
             throw new RuntimeException(e);
         }
 
+        System.setProperty("org.uncommons.reportng.escape-output","false");
+
         Reporter.log("click to see Screenshot");
         Reporter.log("<a target=\"_blank\" href="+TestUtil.screenshotName+">Screenshot</a");
         Reporter.log("<br>");
@@ -52,6 +54,8 @@ public class CustomListeners extends TestBase implements ITestListener {
     }
 
     public void onStart(ITestContext context) {
+        ExtentManager.getReportInstance();
+        ExtentManager.createTest("Test",context.getName());
     }
 
     public void onFinish(ITestContext context) {

@@ -42,6 +42,7 @@ public class TestBase {
     public static Logger log  = Logger.getLogger("devpinoyLogger");
     public static ExcelReader excel = new ExcelReader(System.getProperty("user.dir")+"\\src\\test\\resources\\excel\\testData.xlsx");
     public static WebDriverWait wait;
+    public ExtentManager extent;
 
     @BeforeSuite
     public void setUp() {
@@ -53,6 +54,7 @@ public class TestBase {
         }
         try {
             config.load(fis);
+
             log.debug("Config File Loaded !!");
         }catch (IOException e){
             e.printStackTrace();
@@ -82,6 +84,16 @@ public class TestBase {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Integer.parseInt(config.getProperty("implicit.wait")), TimeUnit.SECONDS);
         wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+    }
+
+    public void click (String locator){
+        driver.findElement(By.cssSelector(OR.getProperty(locator))).click();
+        extentManager.
+    }
+
+    public void type (String locator, String value){
+        driver.findElement(By.cssSelector(OR.getProperty(locator))).sendKeys(value);
+
     }
 
     public boolean elementIsPresent(By by){
