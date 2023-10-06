@@ -29,4 +29,15 @@
             </class>
         </classes>
     </test>
+    <test verbose="2"
+          preserve-order="true"
+          name="Open Account Test">
+        <classes>
+            <class name="org.sagsri.testcases.OpenAccountTest">
+                <methods>
+                    <include name="openAccountTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>

@@ -23,6 +23,11 @@ public class AddCustomerTest extends TestBase {
         driver.findElement(By.cssSelector(OR.getProperty("addBtn"))).click();
         ExtentManager.pass("Customer added successfully...");
         try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        try {
             Alert alert = wait.until(ExpectedConditions.alertIsPresent());
             Assert.assertTrue(alert.getText().contains(alertText));
             alert.accept();

@@ -2,12 +2,15 @@ package org.sagsri.base;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.sagsri.utilities.ExcelReader;
 import org.sagsri.utilities.ExtentManager;
@@ -42,7 +45,10 @@ public class TestBase {
     public static Logger log  = Logger.getLogger("devpinoyLogger");
     public static ExcelReader excel = new ExcelReader(System.getProperty("user.dir")+"\\src\\test\\resources\\excel\\testData.xlsx");
     public static WebDriverWait wait;
-    public ExtentManager extent;
+
+    public static ExtentTest test;
+
+
 
     @BeforeSuite
     public void setUp() {
@@ -86,15 +92,15 @@ public class TestBase {
         wait=new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    public void click (String locator){
-        driver.findElement(By.cssSelector(OR.getProperty(locator))).click();
-        extentManager.
-    }
+//    public void click (String locator){
+//        driver.findElement(By.cssSelector(OR.getProperty(locator))).click();
+//        test.log(Status.INFO, "Click on : "+locator);
+//    }
 
-    public void type (String locator, String value){
-        driver.findElement(By.cssSelector(OR.getProperty(locator))).sendKeys(value);
-
-    }
+//    public void type (String locator, String value){
+//        driver.findElement(By.cssSelector(OR.getProperty(locator))).sendKeys(value);
+//        test.log(Status.INFO, "Typing in : "+locator+"entered value as : "+value);
+//    }
 
     public boolean elementIsPresent(By by){
         try{
